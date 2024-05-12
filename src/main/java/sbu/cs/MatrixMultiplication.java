@@ -68,10 +68,8 @@ public class MatrixMultiplication {
         threads[2] = new Thread(new BlockMultiplier(tempMatrixProduct, matrix_A , matrix_B , p / 2 , p  , 0 , r / 2));
         threads[3] = new Thread(new BlockMultiplier(tempMatrixProduct, matrix_A , matrix_B , p / 2 , p , r / 2 , r));
 
-        for (int i = 0; i < 4; i++) {
-            threads[i].start();
-        }
         for (Thread thread: threads) {
+            thread.start();
             try {
                 thread.join();
             } catch (InterruptedException e){
